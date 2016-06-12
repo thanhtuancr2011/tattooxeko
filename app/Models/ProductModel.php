@@ -145,13 +145,13 @@ class ProductModel extends Model
             $filesUpload = $data['fileUploaded'];
 
             // Contain all uniIds of files uploaded
-            $uniIdsFile = array_fetch($filesUpload, 'uniId');
+            $uniIdsFile = array_column($filesUpload, 'uniId');
 
             // Get all images of product
             $images = $this->images->toArray();
             
             // Contain all uniIds of product images
-            $uniIdsProduct = array_fetch($images, 'uniId');
+            $uniIdsProduct = array_column($images, 'uniId');
 
             $uniIdsDelete = array_diff($uniIdsProduct, $uniIdsFile);
 
@@ -215,7 +215,7 @@ class ProductModel extends Model
         foreach ($products as $key => &$product) {
             $product->images = $product->images()
                             ->select('folder', 'stored_file_name')
-                            ->where('name', 'like', '1%')->first();
+                            ->first();
 
             $listMapProductWithCategoryId[$product->category_id][] = $product;
         }
@@ -238,7 +238,7 @@ class ProductModel extends Model
         foreach ($saleProducts as $key => &$product) {
             $product->images = $product->images()
                             ->select('folder', 'stored_file_name')
-                            ->where('name', 'like', '1%')->first();
+                            ->first();
 
             $listMapProductWithCategoryId[$product->category_id][] = $product;
         }
@@ -260,7 +260,7 @@ class ProductModel extends Model
         foreach ($newProducts as $key => &$product) {
             $product->images = $product->images()
                             ->select('folder', 'stored_file_name')
-                            ->where('name', 'like', '1%')->first();
+                            ->first();
             $listMapProductWithCategoryId[$product->category_id][] = $product;
         }
 
@@ -278,23 +278,32 @@ class ProductModel extends Model
      */
     public function getProductsWithCategoryId($categoryId)
     {
-        $products = self::select('id', 'name', 'price', 'old_price', 'category_id')->where('category_id', $categoryId)->get();
+        $products = self::select('id', 'name', 'price', 'old_price', 'category_id', 'type')->where('category_id', $categoryId)->get();
 
         foreach ($products as $key => &$product) {
             $product->images = $product->images()
                             ->select('folder', 'stored_file_name')
-                            ->where('name', 'like', '1%')->first();
+                            ->first()->toArray();
         }
-
+        
         return $products;
     }
 
+    /**
+     * Get product with id
+     * 
+     * @author Thanh Tuan <thanhtuancr2011@gmail.com>
+     * 
+     * @param  Int    $productId Id of product
+     * 
+     * @return Object Product
+     */
     public function getProductWithId ($productId)
     {
         $product = self::select('id', 'name', 'price', 'old_price', 'category_id', 'meta_description')->findOrFail($productId);
         $product->images = $product->images()
                             ->select('folder', 'stored_file_name')
-                            ->where('name', 'like', '1%')->first();
+                            ->first();
 
         return $product;
     }
@@ -338,9 +347,53 @@ class ProductModel extends Model
         foreach ($products as $key => &$product) {
             $product->images = $product->images()
                              ->select('folder', 'stored_file_name')
-                             ->where('name', 'like', '1%')->first();
+                             ->first();
         }
         
         return $products;
+    }
+
+    /**
+     * Get products with type
+     *
+     * @author Thanh Tuan <thanhtuancr2011@gmail.com>
+     * 
+     * @param  String $productType Type product
+     * 
+     * @return Array        Products
+     */
+    public function getProductWithType($productType)
+    {
+        // Number products to get
+        $take = 12;
+
+        $products = self::where('type', $productType)
+                        ->select('id', 'name', 'price', 'category_id', 'type')
+                        ->limit($take)->get();
+
+        foreach ($products as $key => &$product) {
+            $product->images = $product->images()
+                             ->select('folder', 'stored_file_name')
+                             ->first();
+        }
+        
+        return $products;
+    }
+
+    /**
+     * Get total products with category id
+     * 
+     * @author Thanh Tuan <thanhtuancr2011@gmail.com    
+     * 
+     * @param Int $categoryId Category id
+     * 
+     * @return Int 
+     */
+    public function getTotalProductsWithCategoryId($categoryId)
+    {
+        $totalProducts = self::where('category_id', $categoryId)
+                        ->count();
+
+        return $totalProducts;
     }
 }

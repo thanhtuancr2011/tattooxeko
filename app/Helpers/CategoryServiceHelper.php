@@ -17,15 +17,5 @@ function getCategories()
     						   ->orderBy('sort_order', 'asc')
     						   ->get();
 
-    foreach ($categories as &$category) {
-    	// Category images menu
-        $imageMenu = $category->images()->select('folder', 'stored_file_name')->where('name', 'like', 'm%')->first();
-        $category->imageMenuSrc = $imageMenu->folder . $imageMenu->stored_file_name;
-
-        // Category images feature
-        $imageFeature = $category->images()->select('folder', 'stored_file_name')->where('name', 'like', 'f%')->first();
-        $category->imageFeatureSrc = $imageFeature->folder . $imageFeature->stored_file_name;
-    };
-
     return $categories;
 }

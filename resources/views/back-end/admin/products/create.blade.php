@@ -36,18 +36,9 @@
                                 </div>
                             </div>
                             <div class="form-group" ng-class="{true: 'has-error'}[submitted && formProduct.price.$invalid]">
-                                <label for="last_name">Giá (*)</label>
+                                <label for="last_name">Giá</label>
                                 <div class="">
-                                    <input class="form-control" ng-init="initCurrency('price')" placeholder="Giá" type="text" name="price" id="price"
-                                           ng-model="productItem.price" 
-                                           ng-required="true">
-                                    <label class="control-label" ng-show="submitted && formProduct.price.$error.required">Bạn chưa nhập giá sản phẩm</label>
-                                </div>
-                            </div>
-                            <div class="form-group" ng-class="{true: 'has-error'}[submitted && formProduct.old_price.$invalid]">
-                                <label for="last_name">Giá cũ </label>
-                                <div class="">
-                                    <input class="form-control" ng-init="initCurrency('old_price')" placeholder="Giá cũ" type="text" name="old_price" id="old_price" ng-model="productItem.old_price">
+                                    <input class="form-control" ng-init="initCurrency('price')" placeholder="Giá" type="text" name="price" id="price" ng-model="productItem.price">
                                 </div>
                             </div>
                             <div class="form-group" >
@@ -86,7 +77,7 @@
                             <div class="form-group" ng-class="{true: 'has-error'}[submitted && requireFile]">
                                 <label for="last_name">Hình ảnh (*)</label>
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding-none">
-                                    <file-upload ng-model="fileUploaded" multiple-file="true" is-saved="isSavedData" on-select="selectedFile(selected)"></file-upload>
+                                    <file-upload ng-model="fileUploaded" is-saved="isSavedData" on-select="selectedFile(selected)"></file-upload>
                                     <label class="control-label" ng-show="submitted && requireFile">Bạn chưa chọn hình ảnh cho sản phẩm</label>
                                 </div>
                             </div>

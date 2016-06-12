@@ -20,17 +20,14 @@ class HomeController extends Controller
     public function index()
     {
         $productModel = new ProductModel;
-        
-        // Get list product with categoryid
-        $listProductMapCategoryId = $productModel->getListProductMapCategoryId();
 
-        // Get products sale
-        $saleProducts = $productModel->getSaleProducts();
+        // Get all tattoo images
+        $tattooImages = $productModel->getProductWithType('tattoo');
 
-        // Get new products
-        $newProducts = $productModel->getNewProducts();
+        // Get all tattoo machines
+        $tattooMachines = $productModel->getProductWithType('tattoo_machine');
 
-        return view('front-end.index', compact('listProductMapCategoryId', 'saleProducts', 'newProducts'));
+        return view('front-end.index', compact('listCategories', 'tattooImages', 'tattooMachines'));
     }
 
     /**

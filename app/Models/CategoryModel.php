@@ -310,4 +310,25 @@ class CategoryModel extends Model
     {
         return self::where('parent_id', 0)->first();
     }
+
+    /**
+     * Get lists category
+     *
+     * @author Thanh Tuan <thanhtuancr2011@gmail.com>
+     * 
+     * @return Array Categories 
+     */
+    public function getListCategories()
+    {
+        $categories = self::select('name', 'id')->get()->toArray();
+        return $categories;
+    }
+
+    public function getProducts()
+    {
+        d('123');die;
+        $products = $this->products;
+        d($products);die;
+        return $products;
+    }
 }

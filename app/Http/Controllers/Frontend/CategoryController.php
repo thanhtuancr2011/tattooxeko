@@ -51,13 +51,25 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
+        $categoryId = $id;
+
         $category = CategoryModel::findOrFail($id);
 
         // Get list product with categoryid
         $productModel = new ProductModel;
+
         $products = $productModel->getProductsWithCategoryId($category->id);
 
-        return view('front-end.category.index', compact('category', 'products'));
+        // Type of product
+        if ($category->alias == 'may_xam') {
+            $typeProduct = 'tattoo_machine';
+        } else {
+            $typeProduct = 'tattoo';
+        }
+
+        $totalProducts = count($products);
+        
+        return view('front-end.category.index', compact('category', 'products', 'totalProducts', 'categoryId', 'typeProduct'));
     }
 
     /**

@@ -31,16 +31,21 @@ class CreateRootCategory extends Command
     public function handle()
     {
         $this->info('Start...');
-        $data = [
-            'name' => 'Danh mục gốc',
-            'parent_id' => 0,
-            'sort_order' => 0,
-            'keywords' => 'danh_muc_goc',
-            'description' => 'Danh mục gốc',
-            'alias' => 'danh_muc_goc'
-        ];
 
-        $category = CategoryModel::create($data);
+        $category = CategoryModel::find(0);
+
+        if (!empty($category)) {
+            $data = [
+                'name' => 'Danh mục gốc',
+                'parent_id' => 0,
+                'sort_order' => 0,
+                'keywords' => 'danh_muc_goc',
+                'description' => 'Danh mục gốc',
+                'alias' => 'danh_muc_goc'
+            ];
+
+            $category = CategoryModel::create($data);
+        }         
 
         $this->info('Success...');
     }

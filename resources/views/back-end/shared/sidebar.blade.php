@@ -39,14 +39,38 @@
                     </ul>
                     <!-- /.nav-second-level -->
                 </li>
-           	@endif
+            @endif
 
-           	@if(Auth::user()->is('super.admin'))
+            @if(Auth::user()->is('super.admin'))
                 <li @if(Request::is('admin/user')) class="active" @endif>
                     <a href="#"><i class="fa fa-users fa-fw"></i> Người dùng<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
                             <a href="/admin/user" class="active">Danh sách người dùng</a>
+                        </li>
+                    </ul>
+                    <!-- /.nav-second-level -->
+                </li>
+            @endif
+
+            @if(Auth::user()->is('super.admin'))
+                <li @if(Request::is('admin/about')) class="active" @endif>
+                    <a href="#"><i class="fa fa-globe fa-fw"></i> Giới thiệu<span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a href="/admin/about/create" class="active">Chỉnh sửa giới thiệu</a>
+                        </li>
+                    </ul>
+                    <!-- /.nav-second-level -->
+                </li>
+            @endif
+
+            @if(Auth::user()->is('super.admin'))
+                <li @if(Request::is('admin/contact')) class="active" @endif>
+                    <a href="#"><i class="fa fa-envelope fa-fw"></i> Liên hệ<span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a href="/admin/contact/create" class="active">Chỉnh sửa liên hệ</a>
                         </li>
                     </ul>
                     <!-- /.nav-second-level -->

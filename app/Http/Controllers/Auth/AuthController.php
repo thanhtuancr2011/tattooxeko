@@ -113,10 +113,6 @@ class AuthController extends Controller
             'password' => 'required'
         ];
 
-        // if (isset($request->get('type'))) {
-        //     $this->loginPath() = '/customer'
-        // }
-
         $this->validate($request, $rules, $messsages);
 
         // If the class is using the ThrottlesLogins trait, we can automatically throttle
@@ -140,11 +136,20 @@ class AuthController extends Controller
         if ($throttles) {
             $this->incrementLoginAttempts($request);
         }
+
         return redirect($this->loginPath())
             ->withInput($request->only($this->loginUsername(), 'remember'))
             ->withErrors([
                 $this->loginUsername() => $this->getFailedLoginMessage(),
             ]);
+    }
+
+    /**
+     * Login path
+     */
+    public function loginPath()
+    {
+        return '/auth/login';
     }
 
     /**

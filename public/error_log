@@ -1,0 +1,4 @@
+[10-Jun-2016 03:58:02 UTC] PHP Fatal error:  Call to a member function toArray() on a non-object in /home/tattooxe/public_html/app/Models/ProductModel.php on line 286
+[10-Jun-2016 03:58:10 UTC] PHP Fatal error:  Call to a member function toArray() on a non-object in /home/tattooxe/public_html/app/Models/ProductModel.php on line 286
+[10-Jun-2016 03:58:34 UTC] PHP Fatal error:  Call to a member function toArray() on a non-object in /home/tattooxe/public_html/app/Models/ProductModel.php on line 286
+[10-Jun-2016 04:03:37 UTC] PHP Fatal error:  Call to a member function toArray() on a non-object in /home/tattooxe/public_html/app/Models/ProductModel.php on line 286

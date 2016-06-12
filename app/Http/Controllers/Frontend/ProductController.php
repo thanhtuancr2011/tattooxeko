@@ -91,4 +91,47 @@ class ProductController extends Controller
     {
         //
     }
+
+    /**
+     * Get product with type
+     * 
+     * @author Thanh Tuan <thanhtuancr2011@gmail.com>
+     * 
+     * @param String $type Type of product
+     * 
+     * return Response
+     */
+    public function getProductWithType($type)
+    {
+        $productModel = new ProductModel;
+
+        // Get all tattoo images
+        $products = $productModel->getProductWithType($type);
+
+        // Type of product
+        $typeProduct = $type;
+
+        $totalProducts = count($products);
+
+        return view('front-end.category.index', compact('products', 'typeProduct', 'totalProducts'));
+    }
+
+    /**
+     * Get product image with id
+     * 
+     * @author Thanh Tuan <thanhtuancr2011@gmail.com>
+     * 
+     * @param Int $id Product id
+     * 
+     * return Response
+     */
+    public function getImageProduct($id)
+    {
+        $product = ProductModel::findOrFail($id);
+
+        // Get all tattoo images
+        $productImage = $product->images->first();
+
+        return view('front-end.product.view-image', compact('productImage'));
+    }
 }

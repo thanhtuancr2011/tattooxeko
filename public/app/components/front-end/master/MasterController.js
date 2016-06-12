@@ -23,9 +23,6 @@ masterApp.controller('MasterController', ['$scope', '$rootScope', '$uibModal', '
     	$scope.showCart(data);
     });
 
-    /** SELECT CATEGORY **/
-    $('.select-category').select2();
-
     /**
      * [showCart description]
      * @param  {[type]} data [description]

@@ -165,7 +165,9 @@ productApp.controller('ProductController', ['$scope', '$uibModal', '$filter', 'n
 		}
 
 		// Format price
-		$scope.productItem.price =  parseInt($scope.productItem.price.replace(/,/gi, ""));
+		if (angular.isDefined($scope.productItem.price)) {
+			$scope.productItem.price =  parseInt($scope.productItem.price.replace(/,/gi, "")); 
+		}
 
 		// Format old_price
 		if (angular.isDefined($scope.productItem.old_price)) {
@@ -186,7 +188,6 @@ productApp.controller('ProductController', ['$scope', '$uibModal', '$filter', 'n
 			} else{
 				$scope.productItem = data.product;
 				$scope.isSavedData = true;
-				// $uibModalInstance.close(data); // Clost modal
 			}
 		});
 	};

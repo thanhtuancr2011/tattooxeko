@@ -4,8 +4,6 @@
 
 {!! Html::script('bower_components/jquery/dist/jquery.min.js')!!}
 
-{!! Html::script('assets/lib/bootstrap/js/bootstrap.min.js')!!}
-
 {!! Html::script('bower_components/jquery-ui/jquery-ui.min.js')!!}  
 {!! Html::script('bower_components/angular/angular.min.js')!!}  
 {!! Html::script('bower_components/fancytree/dist/jquery.fancytree-all.min.js')!!}
@@ -51,24 +49,32 @@
 {!! Html::script('bower_components/ng-file-upload/ng-file-upload-all.min.js')!!}
 {!! Html::script('bower_components/ng-file-upload/ng-file-upload-shim.min.js')!!}
 
+{!! Html::script('bower_components/magnific-popup/dist/jquery.magnific-popup.min.js')!!}
+
 <script type="text/javascript">
 
     window.baseUrl = '{{URL::to("")}}';
-    window.carts = {!! json_encode(getCarts()) !!};
-    window.priceTotal = {!! json_encode(getPriceTotal()) !!};
-    window.numberItem = {!! json_encode(getNumberItem()) !!};
     window.categories = {!! json_encode(getCategories()) !!};
 
 </script>
 
-{!!Html::script('assets/lib/jquery.bxslider/jquery.bxslider.min.js')!!}
-{!!Html::script('assets/lib/owl.carousel/owl.carousel.min.js')!!}
-{!!Html::script('assets/lib/jquery.countdown/jquery.countdown.min.js')!!}
-{!!Html::script('assets/js/jquery.actual.min.js')!!}
-{!!Html::script('assets/js/theme-script.js')!!}
-{!!Html::script('assets/lib/jquery.elevatezoom.js')!!}
-{!!Html::script('assets/lib/fancyBox/jquery.fancybox.js')!!}
+<script src="/js_css/jquery-2.1.3.js" type="text/javascript"></script>
+<script src="/js_css/slide-transition.js" type="text/javascript"></script>
+<script src="/js_css/jssor/jssor.js" type="text/javascript"></script>
+<script src="/js_css/jssor/jssor.slider.js" type="text/javascript"></script>
 
+{!!Html::script('bower_components/elevatezoom/jquery.elevateZoom-2.2.3.min.js')!!}
+
+<script>
+	$(".image-product").elevateZoom({
+	    zoomWindowFadeIn: 500,
+	    zoomWindowFadeOut: 500,
+	    lensFadeIn: 500,
+	    lensFadeOut: 500,
+	    zoomWindowPosition: 1, 
+	    zoomWindowOffetx: 10
+	});
+</script>
 
 {!! Html::script('app/components/front-end/cart/CartService.js?v='.getVersionScript())!!}
 {!! Html::script('app/components/front-end/master/MasterService.js?v='.getVersionScript())!!}

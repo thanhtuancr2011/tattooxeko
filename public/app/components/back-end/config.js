@@ -7,5 +7,7 @@ angular.module('file', []);
 angular.module('CartApp', []);
 angular.module('CustomerApp', []);
 angular.module('OrderApp', []);
+angular.module('AboutApp', []);
+angular.module('ContactApp', []);
 
 

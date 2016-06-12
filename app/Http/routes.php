@@ -43,6 +43,9 @@ Route::group(['prefix' => 'api'], function(){
 	Route::post('customer/login-facebook', 'Api\Frontend\CustomerController@postLoginFacebook');
 	Route::resource('customer', 'Api\Frontend\CustomerController');
 
+	Route::resource('about', 'Api\Backend\AboutController');
+	Route::resource('contact', 'Api\Backend\ContactController');
+
 	Route::post('search-product', 'Api\Frontend\HomeController@searchProduct');
 });
 
@@ -51,14 +54,15 @@ Route::group(['prefix' => 'admin'], function(){
 	Route::resource('user', 'Backend\UserController');
 	Route::resource('category', 'Backend\CategoryController');
 	Route::resource('product', 'Backend\ProductController');
-Route::resource('order', 'Backend\OrderController');
+	Route::resource('about', 'Backend\AboutController');
+	Route::resource('contact', 'Backend\ContactController');
 });
 
-Route::get('product/file/download/{id}','BackEnd\FileProductController@download');
-Route::resource('product/file','BackEnd\FileProductController');
+Route::get('product/file/download/{id}','Backend\FileProductController@download');
+Route::resource('product/file','Backend\FileProductController');
 
-Route::get('category/file/download/{id}','BackEnd\FileCategoryController@download');
-Route::resource('category/file','BackEnd\FileCategoryController');
+Route::get('category/file/download/{id}','Backend\FileCategoryController@download');
+Route::resource('category/file','Backend\FileCategoryController');
 
 /* Route user */
 Route::get('user/profile/{id}', 'Backend\UserController@show');
@@ -81,4 +85,12 @@ Route::resource('customer', 'Frontend\CustomerController');
 
 Route::get('product/search/{id}', 'Frontend\HomeController@getSearch');
 
+Route::get('list-product/{type}', 'Frontend\ProductController@getProductWithType');
 
+// Route about
+Route::get('about', 'Frontend\AboutController@getAbout');
+
+// Route contact
+Route::get('contact', 'Frontend\ContactController@getContact');
+
+Route::get('view-image/{id}', 'Frontend\ProductController@getImageProduct');

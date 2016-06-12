@@ -10,6 +10,8 @@ var defaultModules =
 	'AppUser',
 	'ProductApp',
 	'CategoryApp',
+	'AboutApp',
+	'ContactApp',
 	'OrderApp',
 	'AppUserProfile',
 	'selectLevelCategory',

@@ -87,7 +87,7 @@
                             </div>
                             <div class="form-group" ng-class="{true: 'has-error'}[submitted && requireFile]">
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding-none">
-                                    <file-upload ng-model="fileUploaded" multiple-file="true" file-type="'/jpg'" files-upload="filesUpload" is-saved="isSavedData" on-select="selectedFile(selected)" on-edit="editItem(edited)"></file-upload>
+                                    <file-upload ng-model="fileUploaded" file-type="'/jpg'" files-upload="filesUpload" is-saved="isSavedData" on-select="selectedFile(selected)" on-edit="editItem(edited)"></file-upload>
                                     <label class="control-label" ng-show="submitted && requireFile">Bạn chưa chọn hình ảnh cho sản phẩm</label>
                                 </div>
                             </div>

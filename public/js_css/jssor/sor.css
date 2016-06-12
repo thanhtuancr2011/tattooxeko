@@ -1,0 +1,55 @@
+/* jssor slider bullet navigator skin 03 css */
+/*
+.jssorb03 div           (normal)
+.jssorb03 div:hover     (normal mouseover)
+.jssorb03 .av           (active)
+.jssorb03 .av:hover     (active mouseover)
+.jssorb03 .dn           (mousedown)
+*/
+.jssorb03 {
+	position: absolute;
+}
+.jssorb03 div, .jssorb03 div:hover, .jssorb03 .av {
+	position: absolute;
+	/* size of bullet elment */
+	width: 21px;
+	height: 21px;
+	text-align: center;
+	line-height: 23px;
+	color: white;
+	font-size: 12px;
+	background:#a00036;
+	overflow: hidden;
+	cursor: pointer;
+	-webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+	border-radius: 8px;
+}
+.jssorb03 .av span { background:#fff;color:#fff;-webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+	border-radius: 8px;padding:0px 4px; }
+.jssorb03 .dn, .jssorb03 .dn:hover { background-position: -35px -4px;}
+
+/* jssor slider arrow navigator skin 05 css */
+/*
+.jssora05l              (normal)
+.jssora05r              (normal)
+.jssora05l:hover        (normal mouseover)
+.jssora05r:hover        (normal mouseover)
+.jssora05ldn            (mousedown)
+.jssora05rdn            (mousedown)
+*/
+.jssora05l, .jssora05r, .jssora05ldn, .jssora05rdn
+{
+	position: absolute;
+	cursor: pointer;
+	display: block;
+	background: url(../../js_css/jssor/img/a04.png) no-repeat;
+	overflow:hidden;
+}
+.jssora05l { background-position: -0px 0px; }
+.jssora05r { background-position: -63px 0px; }
+.jssora05l:hover { background-position: -181px 0px; }
+.jssora05r:hover { background-position: -138px 0px; }
+.jssora05ldn { background-position: -74px 0px; }
+.jssora05rdn { background-position: -74px 0px; }
